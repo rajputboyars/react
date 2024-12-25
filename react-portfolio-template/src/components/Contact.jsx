@@ -29,9 +29,9 @@ const ContactUs = () => {
         <p className="text-center mb-12 text-lg text-gray-600">
           Have questions or want to reach out? We'd love to hear from you!
         </p>
-        <div className="grid grid-cols-2 items-center justify-between gap-12">
+        <div className="md:grid md:grid-cols-2 items-center justify-between gap-12">
           {/* Left side image */}
-          <div className="w-full h-full">
+          <div className="w-full h-full max-md:hidden">
             <img
               src={ContactUsImage} // Replace this with your image URL
               alt="Contact Us"
