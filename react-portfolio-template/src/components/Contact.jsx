@@ -1,0 +1,104 @@
+import React, { useState } from 'react';
+import ContactUsImage from "/images/contact/contact.jpeg"
+const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission (you can send the data to a server or email)
+    console.log(formData);
+    alert('Your message has been sent!');
+  };
+
+  return (
+    <section id="contact-us" className="py-16 bg-tertiary scroll-m-14">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-6">Contact Us</h2>
+        <p className="text-center mb-12 text-lg text-gray-600">
+          Have questions or want to reach out? We'd love to hear from you!
+        </p>
+        <div className="grid grid-cols-2 items-center justify-between gap-12">
+          {/* Left side image */}
+          <div className="w-full h-full">
+            <img
+              src={ContactUsImage} // Replace this with your image URL
+              alt="Contact Us"
+              className="w-full h-full object-cover rounded-lg shadow-lg"
+            />
+          </div>
+
+          {/* Right side form */}
+          <div className="w-full bg-white p-8 rounded-lg shadow-lg">
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label htmlFor="name" className="block text-lg font-semibold text-gray-700">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-lg font-semibold text-gray-700">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="message" className="block text-lg font-semibold text-gray-700">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="5"
+                  className="w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  placeholder="Enter your message"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 bg-yellow-400 text-white font-semibold text-lg rounded-lg hover:bg-yellow-500 transition"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactUs;
